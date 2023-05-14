@@ -9,7 +9,7 @@ To install and run the script on your system, follow these steps:
 **Clone the repository to your local machine:**
 
 ```
-git clone https://github.com/your-username/bash-script-for-system-setup.git
+git clone https://github.com/CyberOneTechnologies/DebianSetup.git
 ```
 
 **Navigate to the cloned directory:**
