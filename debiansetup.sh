@@ -36,7 +36,12 @@ EOF
 chmod +x SystemUpdate.sh
 
 # Add crontab job to run SystemUpdate.sh every Tue, Thur, and Sat at 00:30 am
-(crontab -l 2>/dev/null; echo "30 0 * * 2,4,6 /path/to/SystemUpdate.sh") | crontab -
+crontab_entry="30 0 * * 2,4,6 $(realpath SystemUpdate.sh)"
+crontab_file=$(mktemp)
+crontab -l > "$crontab_file" 2>/dev/null || true
+echo "$crontab_entry" >> "$crontab_file"
+crontab "$crontab_file"
+rm "$crontab_file"
 
 # Install necessary packages for remote syslog tool
 echo "${green}${bold}Installing syslog-ng...${reset}"
