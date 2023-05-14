@@ -1,7 +1,3 @@
-# DebianSetup
-Ubuntu, Kali, Raspbian, and Debian
-
-
 # Bash Script for System Setup
 
 This Bash script automates the setup process for a system running Ubuntu, Kali, or other Debian-based systems. It performs the following tasks:
