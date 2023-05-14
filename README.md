@@ -15,20 +15,20 @@ git clone https://github.com/CyberOneTechnologies/DebianSetup.git
 **Navigate to the cloned directory:**
 
 ```
-cd bash-script-for-system-setup
+cd DebianSetup
 ```
 
 **Make the script file executable:**
 
 ```
-chmod +x setup.sh
+chmod +x debiansetup.sh
 ```
 
 
 **Run the script with root privileges:**
 
 ```
-sudo ./setup.sh
+sudo ./debiansetup.sh
 ```
 
 
