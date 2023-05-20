@@ -35,13 +35,13 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y && sudo ap
 EOF
 
 # Make SystemUpdate.sh executable
-sudo chmod +x SystemUpdate.sh
+chmod +x SystemUpdate.sh
 
 # Move SystemUpdate.sh to /usr/local/sbin
 sudo mv -p SystemUpdate.sh /usr/local/sbin/SystemUpdate.sh
 
 # Add crontab job to run SystemUpdate.sh every Tue, Thur, and Sat at 00:30 am
-(crontab -l 2>/dev/null; echo "30 0 * * 2,4,6 /usr/local/sbin/SystemUpdate.sh") | crontab -
+echo "30 0 * * 2,4,6 root /usr/local/sbin/SystemUpdate.sh" >> /etc/crontab
 
 # Install necessary packages for remote syslog tool
 echo "${green}${bold}Installing syslog-ng...${reset}"
