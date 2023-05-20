@@ -38,7 +38,7 @@ EOF
 chmod +x SystemUpdate.sh
 
 # Move SystemUpdate.sh to /usr/local/sbin
-sudo mv -p SystemUpdate.sh /usr/local/sbin/SystemUpdate.sh
+sudo cp SystemUpdate.sh /usr/local/sbin/SystemUpdate.sh
 
 # Add crontab job to run SystemUpdate.sh every Tue, Thur, and Sat at 00:30 am
 echo "30 0 * * 2,4,6 root /usr/local/sbin/SystemUpdate.sh" >> /etc/crontab
