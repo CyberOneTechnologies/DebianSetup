@@ -1,13 +1,14 @@
 #! /bin/bash
 
 
+#
 #	░█████╗░██╗░░░██╗██████╗░███████╗██████╗░░█████╗░███╗░░██╗███████╗
 #	██╔══██╗╚██╗░██╔╝██╔══██╗██╔════╝██╔══██╗██╔══██╗████╗░██║██╔════╝
 #	██║░░╚═╝░╚████╔╝░██████╦╝█████╗░░██████╔╝██║░░██║██╔██╗██║█████╗░░
 #	██║░░██╗░░╚██╔╝░░██╔══██╗██╔══╝░░██╔══██╗██║░░██║██║╚████║██╔══╝░░
 #	╚█████╔╝░░░██║░░░██████╦╝███████╗██║░░██║╚█████╔╝██║░╚███║███████╗
 #	░╚════╝░░░░╚═╝░░░╚═════╝░╚══════╝╚═╝░░╚═╝░╚════╝░╚═╝░░╚══╝╚══════╝
-
+#
 
 
 # Set color variables for better readability
@@ -37,10 +38,10 @@ EOF
 sudo chmod +x SystemUpdate.sh
 
 # Move SystemUpdate.sh to /usr/local/sbin
-sudo mv SystemUpdate.sh /usr/local/sbin/SystemUpdate.sh
+sudo mv -p SystemUpdate.sh /usr/local/sbin/SystemUpdate.sh
 
 # Add crontab job to run SystemUpdate.sh every Tue, Thur, and Sat at 00:30 am
-sudo echo "30 0 * * 2,4,6 root /usr/local/sbin/SystemUpdate.sh" >> /etc/crontab
+(crontab -l 2>/dev/null; echo "30 0 * * 2,4,6 /usr/local/sbin/SystemUpdate.sh") | crontab -
 
 # Install necessary packages for remote syslog tool
 echo "${green}${bold}Installing syslog-ng...${reset}"
@@ -59,7 +60,7 @@ sudo apt-get install -y snmp snmpd
 # Configure SNMP to send traps to the SNMP server
 echo "${green}${bold}Configuring SNMP...${reset}"
 sudo sed -i "s|agentAddress udp:127.0.0.1:161|#agentAddress udp:127.0.0.1:161|g" /etc/snmp/snmpd.conf
-echo "trapsink $snmp_server_ip $snmp_community" | sudo tee -a /etc/snmp/snmpd.conf
+echo "trapsink $syslog_server_ip $snmp_community" | sudo tee -a /etc/snmp/snmpd.conf
 sudo systemctl restart snmpd
 
 echo "${green}${bold}Setup completed successfully!${reset}"
