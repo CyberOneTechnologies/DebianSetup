@@ -17,7 +17,7 @@ This script automates the setup process for a logging and monitoring system. It 
 ## Features
 - Uses color variables to enhance readability in the terminal.
 - Prompts the user to enter the necessary information for configuring the logging and monitoring system.
-- Creates and executes a script (SystemUpdate.sh) for updating system packages.
+- Creates and executes a script (**`SystemUpdate.sh`**) for updating system packages.
 - Sets up a cron job to automatically run the system update script at specific intervals.
 - Installs and configures syslog-ng for exporting syslogs to the logging server.
 - Installs and configures SNMP for sending traps to the SNMP server.
