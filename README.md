@@ -1,6 +1,27 @@
 # Bash Script for System Setup
 
-This Bash script automates the setup process for a system running Ubuntu, Kali, or other Debian-based systems. It performs the following tasks:
+## Description
+This script automates the setup process for a logging and monitoring system. It prompts the user to enter the IP addresses of the logging server and the syslog server, as well as the SNMP community string. It then performs the following tasks:
+
+- Creates a script named **'SystemUpdate.sh'** that updates the system packages.
+- Makes the **'SystemUpdate.sh'** script executable.
+- Moves the **'SystemUpdate.sh'** script to the **'/usr/local/sbin directory'**.
+- Adds a crontab job to run the **'SystemUpdate.sh'** script every Tuesday, Thursday, and Saturday at 00:30 am.
+- Installs the syslog-ng package for remote syslog functionality.
+- Configures syslog-ng to export syslogs to the logging server.
+- Restarts the syslog-ng service.
+- Installs the SNMP package.
+- Configures SNMP to send traps to the SNMP server.
+- Restarts the SNMP daemon.
+
+## Features
+- Uses color variables to enhance readability in the terminal.
+- Prompts the user to enter the necessary information for configuring the logging and monitoring system.
+- Creates and executes a script (SystemUpdate.sh) for updating system packages.
+- Sets up a cron job to automatically run the system update script at specific intervals.
+- Installs and configures syslog-ng for exporting syslogs to the logging server.
+- Installs and configures SNMP for sending traps to the SNMP server.
+- Provides feedback messages indicating the successful completion of the setup process.
 
 ## Installation
 
